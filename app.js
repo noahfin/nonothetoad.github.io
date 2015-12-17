@@ -12,18 +12,6 @@ var count = 0;
 var startcolors = ['red', 'blue', 'yellow',  'green'];
 
 
-var colorIndex = Math.floor(Math.random() * 4)
-	var style = {
-            backgroundColor : colors[3][0]               
-    	};
-
-	/*$('.blue').css("backgroundColor", "blue");
-	$('.yellow').css("backgroundColor", "yellow");
-	$('.green').css("backgroundColor", "green");
-	$('.red').css("backgroundColor", "red");
-	console.log()
-    $('.green').css(style);
-	*/
 	function setColor(){
 		count++;
 		var colorIndex = Math.floor(Math.random() * 4);
@@ -40,19 +28,16 @@ var colorIndex = Math.floor(Math.random() * 4)
 			$(colorDiv).css(style);
 			setTimeout(function(){
 				$(colorDiv).css({ backgroundColor : startcolors[colorIndex]})
-			},1500)
+			},800)
 			
 			return colorIndex;
 		}
-		setTimeout(setColor, 2000);
+		setTimeout(setColor, 1600);
 		setTimeout(function(){
 			$(colorDiv).css({ backgroundColor : startcolors[colorIndex]})
 		},1500)
-		
 
 	} 
-
-
 	
 	setColor();
 
