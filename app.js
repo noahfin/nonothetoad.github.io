@@ -37,7 +37,12 @@ var colorIndex = Math.floor(Math.random() * 4)
 		
 		$(colorDiv).css(style);
 		if(count === 3){
-			return;
+			$(colorDiv).css(style);
+			setTimeout(function(){
+				$(colorDiv).css({ backgroundColor : startcolors[colorIndex]})
+			},1500)
+			
+			return colorIndex;
 		}
 		setTimeout(setColor, 2000);
 		setTimeout(function(){
@@ -50,6 +55,7 @@ var colorIndex = Math.floor(Math.random() * 4)
 
 	
 	setColor();
+
 	
 	
 
