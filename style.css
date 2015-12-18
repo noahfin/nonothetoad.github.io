@@ -55,6 +55,17 @@ header{
 	color: #43464B;
 
 }
+.round{
+	width: 40%;
+	left: 130px;
+	position: relative;
+
+	bottom: 560px;
+	font-size: 30pt;
+
+
+	color: red;
+}
 section {
 
 	max-width: 840px;
@@ -130,13 +141,19 @@ section {
 	background: black;
 	border-radius: 100px;
 	text-align: center;
-	padding: 35px;
+	padding: 30px;
 	color: lightgray;
-	font-size: 40px;
+
+	
 }
 
-.simon-body .center p{
+.simon-body .center button{
+	position: relative;
+	right: 3px;
+	font-size: 38px;
 	margin-top:  37px;
+	background: #666666;
+
 
 }
   .h3-div{

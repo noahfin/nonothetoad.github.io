@@ -103,6 +103,11 @@ var sounds = [sound1, sound2, sound3, sound4];
 	   	}
 
 	}
+		function starGame(){
+			console.log('buton works')
+			createColors();
+			displayColor();
+		}
   		
   		$('.red').on("click", checkMatch);
   		
@@ -111,13 +116,13 @@ var sounds = [sound1, sound2, sound3, sound4];
   		$('.yellow').on("click", checkMatch);
 
   		$('.green').on("click", checkMatch);
+
+  		$('#start').on("click", starGame);
+
   	
 
 
  
-createColors();
-
-displayColor();
 
  /*   	function playgame (){
   		var x = 0;
