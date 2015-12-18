@@ -12,6 +12,7 @@ var count = 0;
 var startcolors = ['red', 'blue', 'yellow',  'green'];
 var sequenceArray=[1];
 var waitFlag = true;
+var startFlag = true;
 var sequenceIndex =0;
 var sequenceCount =0
 var roundCount = 0;
@@ -21,8 +22,9 @@ var sound3 = new Audio( 'sounds_03.mp3' );
 var sound4 = new Audio( 'sounds_04.mp3' ); 
 var sounds = [sound1, sound2, sound3, sound4];
 
-	function displayColor (){		
-		
+	function displayColor (){	
+
+		startFlag = false;
 		var colorIndex = sequenceArray[count]
 		console.log(colorIndex);
 		var colorObject = colors[colorIndex][0];
@@ -102,14 +104,16 @@ var sounds = [sound1, sound2, sound3, sound4];
 	   		
 	   		}else{
 	   			alert("Wrong color, Game Over!")
+	   			startFlag = true;
 	   		}
 	   	}
 
 	}
 		function starGame(){
-			console.log('buton works')
+			if(startFlag){			
 			createColors();
 			displayColor();
+			}
 		}
 		function displayRound(){
 
