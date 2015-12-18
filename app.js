@@ -2,36 +2,57 @@ $(document).ready(function(){
 	console.log("It works ")
 
 
-//device lighting up one or more buttons in a random order
-var red = "rgba(255,0,0, .3)"
-var blue = "rgba(0,0,128, .3)"
-var yellow = "rgba(255,255,0, .3)"
-var green = "rgba(0, 255, 0, .3)"
-var colors = [[red,$('.red')], [blue,$('.blue')], [yellow, $('.yellow')], [green, $('.green')]];
-var count = 0;
-var startcolors = ['red', 'blue', 'yellow',  'green'];
-var sequenceArray=[1];
-var waitFlag = true;
-var sequenceIndex =0;
-var sequenceCount =0
-var roundCount = 0;
-var sound1 = new Audio('sounds_01.mp3'); 
-var sound2 = new Audio( 'sounds_02.mp3' );
-var sound3 = new Audio( 'sounds_03.mp3' );  
-var sound4 = new Audio( 'sounds_04.mp3' ); 
-var sounds = [sound1, sound2, sound3, sound4];
+var red;
+var blue;
+var yellow;
+var green;
+var colors;
+var count;
+var startcolors;
+var sequenceArray;
+var waitFlag;
+var sequenceIndex;
+var sequenceCount;
+var roundCount;
+var sound1;
+var sound2;
+var sound3;
+var sound4;
+var sounds;
 
-	function displayColor (){		
-		
+//device lighting up one or more buttons in a random order
+function initialize(){
+  console.log("initialize");
+  red = "rgba(255,0,0, .3)";
+  blue = "rgba(0,0,128, .3)";
+  yellow = "rgba(255,255,0, .3)";
+  green = "rgba(0, 255, 0, .3)";
+  colors = [[red,$('.red')], [blue,$('.blue')], [yellow, $('.yellow')], [green, $('.green')]];
+  count = 0;
+  startcolors = ['red', 'blue', 'yellow',  'green'];
+  sequenceArray= [Math.floor( Math.random() * colors.length )];
+  waitFlag = true;
+  sequenceIndex =0;
+  sequenceCount =0
+  roundCount = 0;
+  sound1 = new Audio('sounds_01.mp3');
+  sound2 = new Audio( 'sounds_02.mp3' );
+  sound3 = new Audio( 'sounds_03.mp3' );
+  sound4 = new Audio( 'sounds_04.mp3' );
+  sounds = [sound1, sound2, sound3, sound4];
+}
+
+	function displayColor (){
+
 		var colorIndex = sequenceArray[count]
 		console.log(colorIndex);
 		var colorObject = colors[colorIndex][0];
 		var colorDiv = colors[colorIndex][1];
-		
+
 		//console.log(colors[colorIndex]);
 		var style = {
-            backgroundColor : colorObject               
-    		};    		
+            backgroundColor : colorObject
+    		};
 		console.log(sounds[colorIndex]);
 		sounds[colorIndex].play();
 		colorDiv.css(style);
@@ -40,7 +61,7 @@ var sounds = [sound1, sound2, sound3, sound4];
 			setTimeout(function(){
 				colorDiv.css({ backgroundColor : startcolors[colorIndex]})
 			},800)
-			 
+
 			 waitFlag = false;
 				return ;
 		}
@@ -50,7 +71,8 @@ var sounds = [sound1, sound2, sound3, sound4];
 		},1500)
 		count++;
 
-	} 
+	}
+
 	function createColors(number){
 		/*for (var i = 0; i < number; i++) {
 			var colorIndex = Math.floor(Math.random() * 4);
@@ -67,14 +89,14 @@ var sounds = [sound1, sound2, sound3, sound4];
    	var thisClass = $(this).attr('class');
    	var thisInex = startcolors.indexOf(thisClass);
    	var style = {
-            backgroundColor : thisColor               
-    		};    		
+            backgroundColor : thisColor
+    		};
 
 	var $this = $(this);
 	$(this).css(style);
    	console.log(thisInex);
    	sounds[thisInex].play();
-   
+
 	setTimeout(function(){
 		console.log($this.css({ backgroundColor : startcolors[thisInex]}));
    $this.css({ backgroundColor : startcolors[thisInex]})
@@ -82,7 +104,7 @@ var sounds = [sound1, sound2, sound3, sound4];
 	   	if (waitFlag){
 
 	   	}else {
-	   		
+
 	   		if ( thisClass == sequenceColor){
 	   			sequenceIndex++;
 
@@ -96,75 +118,84 @@ var sounds = [sound1, sound2, sound3, sound4];
 	   				setTimeout(function(){
 	   					displayColor();
 	   				},2000);
-	   				
-	   				
+
+
 	   			}
-	   		
+
 	   		}else{
-	   			alert("Wrong color, Game Over!")
-	   		}
-	   	}
+          endGame();
+        }
+      }
+
+  }
+
+  function endGame(){
+		alert("Wrong color, Game Over!")
+    initialize();
+    displayRound();
+  }
+
+	function starGame(){
+    initialize();
+		console.log('buton works')
+		createColors();
+		displayColor();
+	}
+
+	function displayRound(){
+
+		console.log('round works')
+		$('span').text(roundCount)
 
 	}
-		function starGame(){
-			console.log('buton works')
-			createColors();
-			displayColor();
-		}
-		function displayRound(){
-
-			console.log('round works')
-			$('span').text(roundCount)
-			
-		}
-		
-  		
-  		$('.red').on("click", checkMatch);
-  		
-  		$('.blue').on("click", checkMatch);
-
-  		$('.yellow').on("click", checkMatch);
-
-  		$('.green').on("click", checkMatch);
-
-  		$('#start').on("click", starGame);
-
-  	
 
 
- 
+	$('.red').on("click", checkMatch);
+
+	$('.blue').on("click", checkMatch);
+
+	$('.yellow').on("click", checkMatch);
+
+	$('.green').on("click", checkMatch);
+
+	$('#start').on("click", starGame);
+
+
+
+
+
 
  /*   	function playgame (){
   		var x = 0;
-  		while(x < 10) {  			
-  		
+  		while(x < 10) {
+
   			displayColor(count);
   			X++;
-  			//sleep(2000);  			
+  			//sleep(2000);
 
 			if (playerChoice.length >= 3){
 	   			console.log("we have 3 clicks")
 	   			if( checkMatch() ){
-	   				clearData();			   			
+	   				clearData();
 	   			}else {
 	   				alert('Game Over!')
 	   				stillPlaying = false;
 	   				 return 10;
 	   			}
-	   		}   		
+	   		}
 
   		}
-  		
-	 
+
+
 	 //}
 	// playgame();
-   	
+
     	setInterval(function(){
     		displayColor(count);
     		if (playerChoice.length >= 3){
 	   			console.log("we have 3 clicks")
 	   			if( checkMatch() ){
-	   				clearData();			   			
+	   				clearData();
 	   			}else {
 	   				alert('Game Over!')
 	   				stillPlaying = false;
@@ -172,9 +203,9 @@ var sounds = [sound1, sound2, sound3, sound4];
 	   			}
     	}
     },10000)
-    	*/ 
-    		   			
-			
+    	*/
+
+
  // player must reproduce that order by pressing the buttons
 
 //game progresses, the number of buttons to be pressed increases.
