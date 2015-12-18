@@ -19,11 +19,7 @@ var sound2 = new Audio( 'sounds_02.mp3' );
 var sound3 = new Audio( 'sounds_03.mp3' );  
 var sound4 = new Audio( 'sounds_04.mp3' ); 
 var sounds = [sound1, sound2, sound3, sound4];
-	sounds[1]
-	//sound1.attr('type', 'audio/mp3');
-//	sound2.attr('type', 'audio/mp3');
-	//sound3.attr('type', 'audio/mp3');
-	//sound4.attr('type', 'audio.mp3');
+
 	function displayColor (){		
 		
 		var colorIndex = sequenceArray[count]
@@ -65,13 +61,23 @@ var sounds = [sound1, sound2, sound3, sound4];
 	}
   //The player must match the correct color sequence for the game to continue onto the next turn.
    function checkMatch (){
-   //	sounds[colorIndex].play();
+   	var sequenceColor = colors[sequenceArray[sequenceIndex]][1].attr('class');
+    var thisColor = colors[sequenceArray[sequenceIndex]][0];
    	var thisClass = $(this).attr('class');
    	var thisInex = startcolors.indexOf(thisClass);
+   	var style = {
+            backgroundColor : thisColor               
+    		};    		
+
+	var $this = $(this);
+	$(this).css(style);
    	console.log(thisInex);
    	sounds[thisInex].play();
-   	var sequenceColor = colors[sequenceArray[sequenceIndex]][1].attr('class');
-
+   
+	setTimeout(function(){
+		console.log($this.css({ backgroundColor : startcolors[thisInex]}));
+   $this.css({ backgroundColor : startcolors[thisInex]})
+   },800);
 	   	if (waitFlag){
 
 	   	}else {
