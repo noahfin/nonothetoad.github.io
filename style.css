@@ -74,19 +74,19 @@ section {
 
 .simon-body .red{
 	position: relative;
-	left: 201px;
+	left: 196px;
     top: -12px;;
 	width: 200px;
 	height: 200px;
 	background: red;
-	border-top-right-radius: 200px;
-	
-	border-left: 2px solid gray;
+	border-top-right-radius: 200px;	
+	border-left: 3px solid gray;
+
 }
 
 .simon-body .blue{
 	position: relative;
-	left: 201px;
+	left: 197px;
     top: -16px;
 	width: 200px;
 	height: 200px;
@@ -94,6 +94,7 @@ section {
 	border-bottom-right-radius: 200px;
 	border-left: 2px solid gray;
 	border-top: 2px solid gray;
+
 }
 
 .simon-body .yellow{
@@ -105,6 +106,7 @@ section {
 	border-bottom-left-radius: 200px;
 	border-right: 2px solid gray;
 	border-top: 2px solid gray;
+
 }
 .simon-body .green{
 	position: relative;
@@ -115,6 +117,8 @@ section {
 	border-top-left-radius: 200px;
 	border-bottom: 2px solid gray;
 	border-right: 2px solid gray;
+	
+
 }
 
 .simon-body .center{
@@ -129,7 +133,6 @@ section {
 	padding: 35px;
 	color: lightgray;
 	font-size: 40px;
-	border: 3px solid gray;
 }
 
 .simon-body .center p{

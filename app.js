@@ -11,17 +11,22 @@ var colors = [[red,$('.red')], [blue,$('.blue')], [yellow, $('.yellow')], [green
 var count = 0;
 var startcolors = ['red', 'blue', 'yellow',  'green'];
 var sequenceArray=[1];
-var computerChoice = [];
-var playerChoice = [];
-var stillPlaying = true;
 var waitFlag = true;
 var sequenceIndex =0;
 var sequenceCount =0
-
+var sound1 = new Audio('sounds_01.mp3'); 
+var sound2 = new Audio( 'sounds_02.mp3' );
+var sound3 = new Audio( 'sounds_03.mp3' );  
+var sound4 = new Audio( 'sounds_04.mp3' ); 
+var sounds = [sound1, sound2, sound3, sound4];
+	sounds[1]
+	//sound1.attr('type', 'audio/mp3');
+//	sound2.attr('type', 'audio/mp3');
+	//sound3.attr('type', 'audio/mp3');
+	//sound4.attr('type', 'audio.mp3');
 	function displayColor (){		
 		
 		var colorIndex = sequenceArray[count]
-	    computerChoice.push(colorIndex)
 		console.log(colorIndex);
 		var colorObject = colors[colorIndex][0];
 		var colorDiv = colors[colorIndex][1];
@@ -30,7 +35,8 @@ var sequenceCount =0
 		var style = {
             backgroundColor : colorObject               
     		};    		
-		//console.log(computerChoice);
+		console.log(sounds[colorIndex]);
+		sounds[colorIndex].play();
 		colorDiv.css(style);
 		if(count === sequenceArray.length -1){
 			colorDiv.css(style);
@@ -59,34 +65,37 @@ var sequenceCount =0
 	}
   //The player must match the correct color sequence for the game to continue onto the next turn.
    function checkMatch (){
+   //	sounds[colorIndex].play();
    	var thisClass = $(this).attr('class');
+   	var thisInex = startcolors.indexOf(thisClass);
+   	console.log(thisInex);
+   	sounds[thisInex].play();
    	var sequenceColor = colors[sequenceArray[sequenceIndex]][1].attr('class');
 
-   	if (waitFlag){
+	   	if (waitFlag){
 
-   	}else {
-   			console.log(thisClass);
-   			console.log(sequenceColor);
-   		if ( thisClass == sequenceColor){
-   			sequenceIndex++;
+	   	}else {
+	   		
+	   		if ( thisClass == sequenceColor){
+	   			sequenceIndex++;
 
-   			if(sequenceIndex ===  sequenceArray.length  ){
-   				count = 0;
-   				sequenceIndex = 0;
-   				waitFlag = true;
-   				createColors();
-   				displayColor();
-   			}
-   		
-   		}else{
-   			alert("Wrong color, Game Over!")
-   		}
-   	}
+	   			if(sequenceIndex ===  sequenceArray.length  ){
+	   				count = 0;
+	   				sequenceIndex = 0;
+	   				waitFlag = true;
+	   				createColors();
+	   				setTimeout(function(){
+	   					displayColor();
+	   				},1000);
+	   				
+	   				
+	   			}
+	   		
+	   		}else{
+	   			alert("Wrong color, Game Over!")
+	   		}
+	   	}
 
-
-   	 	//if()
-   	 	//console.log('click handerlers are set')
-		//sequenceArray.push(colorDiv);
 	}
   		
   		$('.red').on("click", checkMatch);
@@ -99,16 +108,7 @@ var sequenceCount =0
   	
 
 
-  	
-
-  	function checkGame (){    	   		   		
-	   		   		
-	   	}
-  	function sleep(milliSeconds){
-    var startTime = new Date().getTime();                    // get the current time
-    while (new Date().getTime() < startTime + milliSeconds); // hog cpu until time's up
-}
-
+ 
 createColors();
 
 displayColor();
