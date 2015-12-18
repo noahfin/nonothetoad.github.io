@@ -14,6 +14,7 @@ var sequenceArray=[1];
 var waitFlag = true;
 var sequenceIndex =0;
 var sequenceCount =0
+var roundCount = 0;
 var sound1 = new Audio('sounds_01.mp3'); 
 var sound2 = new Audio( 'sounds_02.mp3' );
 var sound3 = new Audio( 'sounds_03.mp3' );  
@@ -87,12 +88,14 @@ var sounds = [sound1, sound2, sound3, sound4];
 
 	   			if(sequenceIndex ===  sequenceArray.length  ){
 	   				count = 0;
+	   				roundCount++;
 	   				sequenceIndex = 0;
 	   				waitFlag = true;
 	   				createColors();
+	   				displayRound();
 	   				setTimeout(function(){
 	   					displayColor();
-	   				},1000);
+	   				},2000);
 	   				
 	   				
 	   			}
@@ -108,6 +111,13 @@ var sounds = [sound1, sound2, sound3, sound4];
 			createColors();
 			displayColor();
 		}
+		function displayRound(){
+
+			console.log('round works')
+			$('span').text(roundCount)
+			
+		}
+		
   		
   		$('.red').on("click", checkMatch);
   		
