@@ -1,0 +1,187 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/**************************************************************************************/*
+
+
+body{
+	}
+
+header{
+	font-family: 'Poiret One', cursive;
+	background:  whitesmoke;
+	text-align: center;
+	font-weight: 200px;
+	color: darkgray;	
+	font-size: 55px;
+	height: 70px;
+	padding: 5px;
+	border-bottom: 1px solid darkgray;
+
+}
+h3{padding-top: 20px}
+
+.round{
+	width: 40%;
+	left: 130px;
+	position: relative;
+	bottom: 560px;
+	font-size: 30pt;
+	font-family: 'Anton', sans-serif;
+}
+span{
+	color: #ff3333;
+}
+section {
+
+	max-width: 840px;
+	margin-right: auto;
+	margin-left: auto;
+	
+
+}
+.simon-body{
+	margin: auto;
+	width: 400px;
+	height: 400px;
+	border-radius: 275px;
+	
+}
+
+
+.simon-body .red{
+	position: relative;
+	left: 196px;
+    top: -12px;;
+	width: 200px;
+	height: 200px;
+	background: red;
+	border-top-right-radius: 200px;	
+	border-left: 3px solid gray;
+
+}
+
+.simon-body .blue{
+	position: relative;
+	left: 197px;
+    top: -16px;
+	width: 200px;
+	height: 200px;
+	background: blue;
+	border-bottom-right-radius: 200px;
+	border-left: 2px solid gray;
+	border-top: 2px solid gray;
+
+}
+
+.simon-body .yellow{
+	position: relative;
+	bottom: 218px;
+	width: 200px;
+	height: 200px;
+	background: yellow;
+	border-bottom-left-radius: 200px;
+	border-right: 2px solid gray;
+	border-top: 2px solid gray;
+
+}
+.simon-body .green{
+	position: relative;
+    bottom: 616px;
+	width: 200px;
+	height: 200px;
+	background: green;
+	border-top-left-radius: 200px;
+	border-bottom: 2px solid gray;
+	border-right: 2px solid gray;
+	
+
+}
+
+.simon-body .center{
+    position: relative;
+	left: 106px;
+    top: -720px;
+	width: 125px;
+	height: 125px;
+	background: black;
+	border-radius: 100px;
+	text-align: center;
+	padding: 30px;
+	color: lightgray;
+
+	
+}
+
+.simon-body .center button{
+	position: relative;
+	right: 3px;
+	font-size: 38px;
+	margin-top:  37px;
+	background: #666666;
+
+
+
+}
+  .h3-div{
+  	height: 60px;
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
