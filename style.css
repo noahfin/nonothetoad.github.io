@@ -49,22 +49,34 @@ table {
 
 /**************************************************************************************/*
 
+
+body{
+	}
+
 header{
+	font-family: 'Poiret One', cursive;
+	background:  whitesmoke;
 	text-align: center;
-	font-size: 40px;
-	color: #43464B;
+	font-weight: 200px;
+	color: darkgray;	
+	font-size: 55px;
+	height: 70px;
+	padding: 5px;
+	border-bottom: 1px solid darkgray;
 
 }
+h3{padding-top: 20px}
+
 .round{
 	width: 40%;
 	left: 130px;
 	position: relative;
-
 	bottom: 560px;
 	font-size: 30pt;
-
-
-	color: red;
+	font-family: 'Anton', sans-serif;
+}
+span{
+	color: #ff3333;
 }
 section {
 
@@ -155,9 +167,11 @@ section {
 	background: #666666;
 
 
+
 }
   .h3-div{
   	height: 60px;
+
   }
 
 

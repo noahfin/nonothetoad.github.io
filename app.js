@@ -1,7 +1,6 @@
 $(document).ready(function(){
 	console.log("It works ")
 
-
 var red;
 var blue;
 var yellow;
@@ -21,11 +20,7 @@ var sound3;
 var sound4;
 var sounds;
 
-//device lighting up one or more buttons in a random order
-
-
-
-
+//initializes the games state
 		
 function initialize(){
   console.log("initialize");
@@ -48,6 +43,7 @@ function initialize(){
   sound4 = new Audio( 'sounds_04.mp3' );
   sounds = [sound1, sound2, sound3, sound4];
 }
+	//Displays the color sequence
 
 	function displayColor (){
 		startFlag = false;
@@ -57,13 +53,14 @@ function initialize(){
 		var colorObject = colors[colorIndex][0];
 		var colorDiv = colors[colorIndex][1];
 
-		//console.log(colors[colorIndex]);
 		var style = {
             backgroundColor : colorObject
     		};
-		console.log(sounds[colorIndex]);
+		//Plays the sound for that color
 		sounds[colorIndex].play();
+		//changes the background
 		colorDiv.css(style);
+		//if last color in the array it exits
 		if(count === sequenceArray.length -1){
 			colorDiv.css(style);
 			setTimeout(function(){
@@ -73,26 +70,24 @@ function initialize(){
 			 waitFlag = false;
 				return ;
 		}
-		setTimeout(displayColor, 1600);
+		// contiunes to call the displayColor every one and half seconds
+		setTimeout(displayColor, 1500);
 		setTimeout(function(){
 			$(colorDiv).css({ backgroundColor : startcolors[colorIndex]})
-		},1500)
+		},1300)
 		count++;
 
 	}
 
 	function createColors(number){
-		/*for (var i = 0; i < number; i++) {
-			var colorIndex = Math.floor(Math.random() * 4);
-			sequenceArray.push[i]
-		};*/
+		
 		var colorIndex = Math.floor(Math.random() * 4);
 		sequenceArray.push(colorIndex)
 
 	}
-  //The player must match the correct color sequence for the game to continue onto the next turn.
+  //checks if player matched the correct color sequence for the game to continue.
    function checkMatch (){
-   	if(waitFlag){		
+  	if(waitFlag){		
    	}else{
    	var sequenceColor = colors[sequenceArray[sequenceIndex]][1].attr('class');
     var thisColor = colors[sequenceArray[sequenceIndex]][0];
@@ -110,12 +105,9 @@ function initialize(){
 	setTimeout(function(){
 		console.log($this.css({ backgroundColor : startcolors[thisInex]}));
    $this.css({ backgroundColor : startcolors[thisInex]})
-   },800);
-	   	if (waitFlag){
+   },800);	  
 
-	   	}else {
-
-	   		if ( thisClass == sequenceColor){
+	   		if ( thisClass === sequenceColor){
 	   			sequenceIndex++;
 
 	   			if(sequenceIndex ===  sequenceArray.length  ){
@@ -128,18 +120,15 @@ function initialize(){
 	   				setTimeout(function(){
 	   					displayColor();
 	   				},2000);
-
 	   			}
 
 	   		}else{
-
 	   			endGame();
 	   			startFlag = true;
 	   		}
-	   	  }
-	   	}
-	}
-		
+	   	  
+	   }
+	}		
 
   function endGame(){
   	alert("Wrong color, Game Over!")
@@ -147,10 +136,8 @@ function initialize(){
     displayRound();
   }
 
-	function starGame(){
-
-		
-			console.log("it works")
+	function starGame(){	
+		console.log("it works")
         initialize();
 		console.log('buton works')
 		createColors();
@@ -159,10 +146,8 @@ function initialize(){
 	}
 
 	function displayRound(){
-
 		console.log('round works')
-		$('span').text(roundCount)
-
+		$('span').text(roundCount);
 	}
 
 
@@ -180,51 +165,4 @@ function initialize(){
 
 
 
-
-
- /*   	function playgame (){
-  		var x = 0;
-  		while(x < 10) {
-
-  			displayColor(count);
-  			X++;
-  			//sleep(2000);
-
-			if (playerChoice.length >= 3){
-	   			console.log("we have 3 clicks")
-	   			if( checkMatch() ){
-	   				clearData();
-	   			}else {
-	   				alert('Game Over!')
-	   				stillPlaying = false;
-	   				 return 10;
-	   			}
-	   		}
-
-  		}
-
-
-	 //}
-	// playgame();
-
-    	setInterval(function(){
-    		displayColor(count);
-    		if (playerChoice.length >= 3){
-	   			console.log("we have 3 clicks")
-	   			if( checkMatch() ){
-	   				clearData();
-	   			}else {
-	   				alert('Game Over!')
-	   				stillPlaying = false;
-	   				 return 10;
-	   			}
-    	}
-    },10000)
-    	*/
-
-
- // player must reproduce that order by pressing the buttons
-
-//game progresses, the number of buttons to be pressed increases.
-
-});
+});//end of document.ready
