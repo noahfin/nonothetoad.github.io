@@ -33,7 +33,6 @@ function initialize(){
   startcolors = ['red', 'blue', 'yellow',  'green'];
   sequenceArray= [Math.floor( Math.random() * colors.length )];
   waitFlag = true;
-  startFlag = true;
   sequenceIndex =0;
   sequenceCount =0
   roundCount = 0;
@@ -46,7 +45,7 @@ function initialize(){
 	//Displays the color sequence
 
 	function displayColor (){
-		startFlag = false;
+	
 
 		var colorIndex = sequenceArray[count]
 		console.log(colorIndex);
@@ -79,64 +78,61 @@ function initialize(){
 
 	}
 
-	function createColors(number){
-		
+	function createColors(){		
 		var colorIndex = Math.floor(Math.random() * 4);
 		sequenceArray.push(colorIndex)
-
 	}
+
   //checks if player matched the correct color sequence for the game to continue.
    function checkMatch (){
-  	if(waitFlag){		
-   	}else{
-   	var sequenceColor = colors[sequenceArray[sequenceIndex]][1].attr('class');
-    var thisColor = colors[sequenceArray[sequenceIndex]][0];
-   	var thisClass = $(this).attr('class');
-   	var thisInex = startcolors.indexOf(thisClass);
-   	var style = {
+  	if(waitFlag){	// if the the colors are displaying can't click 	
+   	}else{//flashes the color the user clicks on and plays the sound 
+   	var sequenceColor = colors[sequenceArray[sequenceIndex]][1].attr('class'); //finds the class of the color in the sequenceArry
+    var thisColor = colors[sequenceArray[sequenceIndex]][0];// saves the backgound color that needs to be flash 
+   	var thisClass = $(this).attr('class')// gets the class of the Div whick got click
+   	var thisInex = startcolors.indexOf(thisClass);//finds and save the index number of the div clicked
+   	var style = { //create the style objectf of the backgound color
             backgroundColor : thisColor
     		};
 
 	var $this = $(this);
-	$(this).css(style);
-   	console.log(thisInex);
-   	sounds[thisInex].play();
+	$(this).css(style);//changes the backgound color of the div clicked
+   	sounds[thisInex].play();//plays the sound for the color which was clicked
 
-	setTimeout(function(){
+	setTimeout(function(){//changes the color back to the original color after 800 milliseconds
 		console.log($this.css({ backgroundColor : startcolors[thisInex]}));
    $this.css({ backgroundColor : startcolors[thisInex]})
    },800);	  
 
-	   		if ( thisClass === sequenceColor){
-	   			sequenceIndex++;
+   		if ( thisClass === sequenceColor){ //checks to see if they matched the sequence
+   			sequenceIndex++;//incuments the index
 
-	   			if(sequenceIndex ===  sequenceArray.length  ){
-	   				count = 0;
-	   				roundCount++;
-	   				sequenceIndex = 0;
-	   				waitFlag = true;
-	   				createColors();
-	   				displayRound();
-	   				setTimeout(function(){
-	   					displayColor();
-	   				},2000);
-	   			}
+   			if(sequenceIndex ===  sequenceArray.length  ){//if at the end of the sequence
+   				count = 0; // resets the counter for the displayColor()
+   				roundCount++;// adds one the round counter
+   				sequenceIndex = 0; // resets sequence index
+   				waitFlag = true; // makes it so the user can't click the dis
+   				createColors();
+   				displayRound();
+   				setTimeout(function(){//waits one second  then starts to display the color sequence again
+   					displayColor();
+   				},1000);
+   			}
 
-	   		}else{
-	   			endGame();
-	   			startFlag = true;
-	   		}
-	   	  
-	   }
+   		}else{// if the div the user clicked on is not a match it ends the game
+   			endGame();
+   			startFlag = true;
+   		}	   	  
+      }
 	}		
 
-  function endGame(){
+  function endGame(){// function to end the game reinitalize the game back to its original state
   	alert("Wrong color, Game Over!")
     initialize();
     displayRound();
   }
 
-	function starGame(){	
+	function starGame(){	// starts the game by displaying the color sequence 
 		console.log("it works")
         initialize();
 		console.log('buton works')
@@ -145,22 +141,22 @@ function initialize(){
 		
 	}
 
-	function displayRound(){
+	function displayRound(){// changes the text in the span div to the current round
 		console.log('round works')
 		$('span').text(roundCount);
 	}
 
 
 
-	$('.red').on("click", checkMatch);
+	$('.red').on("click", checkMatch); // calls the checkMatch when clicked 
 
-	$('.blue').on("click", checkMatch);
+	$('.blue').on("click", checkMatch); // calls the checkMatch when clicked 
 
-	$('.yellow').on("click", checkMatch);
+	$('.yellow').on("click", checkMatch); // calls the checkMatch when clicked 
 
-	$('.green').on("click", checkMatch);
+	$('.green').on("click", checkMatch); // calls the checkMatch when clicked 
 
-	$('#start').on("click", starGame);
+	$('#start').on("click", starGame); // calls the checkMatch when clicked 
 
 
 
